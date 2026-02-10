@@ -732,4 +732,12 @@ footer {
     .section-padding {
         padding: 80px 0;
     }
+
+    .nav-links {
+        display: none;
+    }
+
+    nav {
+        justify-content: center;
+    }
 }
