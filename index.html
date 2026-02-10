@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>耳で見る、あの日の景色。 </title>
+    <meta name="description" content="音源を「録音」に近づけ、当時の空間を再現する。AIと音響工学を駆使した、新しい音楽体験の探究。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="header">
+        <nav class="container">
+            <div class="logo">@Youpied</div>
+            <ul class="nav-links">
+                <li><a href="#intro">探究の背景</a></li>
+                <li><a href="#research">研究の内容</a></li>
+                <li><a href="#demo">デモ視聴</a></li>
+                <li><a href="#app">アプリ体験</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="overlay"></div>
+            <div class="hero-content container">
+                <h1 class="fade-in">耳で見る、</h1>
+                <h1 class="highlight">あの日の景色。</h1>
+                <p class="subtitle fade-in">「聴く」を「戻る」に変える、音響再現の探究。</p>
+                <div class="scroll-indicator">
+                    <span>Scroll</span>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="section">
+            <div class="container">
+                <div class="grid">
+                    <div class="text-content">
+                        <h2 class="section-title">「耳で見る」体験。</h2>
+                        <p>アーティストのライブや映画を見た帰り道。スマホでその曲を聴き返すと、楽しかった記憶や印象的なシーンが、頭の中に鮮明に「見えてくる」ことがあります。</p>
+                        <p>しかし、そこで聴いている音は、全ての音が近く感じる「音源」であり、「そこにいる感覚」はありません。もし、その音が「実際に会場にいるかのような音」だったら、見えてくる景色はもっと鮮明になるはずです。
+                        </p>
+                    </div>
+                    <div class="image-placeholder reveal" id="img-intro">
+                        <img src="intro.png" alt="耳で見る体験のイメージ">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="definition" class="section dark">
+            <div class="container">
+                <div class="centered-content">
+                    <h2 class="section-title">「リアルな音響」の正体。</h2>
+                    <div class="formula-box">
+                        <div class="formula-item">
+                            <span class="label">リアルな音響（録音）</span>
+                            <span class="value">空間の中で鳴っている音</span>
+                        </div>
+                        <div class="operator">=</div>
+                        <div class="formula-item">
+                            <span class="label">音源</span>
+                            <span class="value">デジタルでクリアな音</span>
+                        </div>
+                        <div class="operator">+</div>
+                        <div class="formula-item highlight">
+                            <span class="label">空間の差分</span>
+                            <span class="value">響き / 周波数特性</span>
+                        </div>
+                    </div>
+                    <p class="formula-desc">「リアルな音響」から「音源」を引いたときに残る差分。この“空間の差分”を再現できれば、音は「音源」から「空間」へと進化します。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <div class="container">
+                <div class="grid reverse">
+                    <div class="text-content">
+                        <h2 class="section-title">テーマパークという、最高の研究室。</h2>
+                        <p>多くのライブや映画では録音が禁止されています。そこで私が着目したのが「テーマパークのBGM」でした。エリアごとに空間の作り込みが异なり、比較研究には最適な環境です。</p>
+                        <p>実際の「録音」と元の「音源」を比較することで、何が「リアルさ」を生んでいるのかを分析。その結果、決定的な要因として「響き（リバーブ）」と「周波数特性」の2点を特定しました。</p>
+                    </div>
+                    <div class="image-placeholder reveal" id="img-research">
+                        <img src="research.jpg" alt="テーマパークでの録音風景">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="section glass">
+            <div class="container">
+                <h2 class="section-title centered">テクノロジーで差分を埋める。</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon">AI</div>
+                        <h3>Python自動解析</h3>
+                        <p>人間の耳では判別不可能なレベルの微細な周波数の違いを、Pythonプログラムで自動算出。録音と音源の差分を数値化します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">EQ</div>
+                        <h3>動的イコライザー</h3>
+                        <p>解析結果を元に、最適なイコライザー設定を自動生成。「その場所特有の音」を再現します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">WEB</div>
+                        <h3>ブラウザで完結</h3>
+                        <p>誰もが簡単に、手軽に体験できるように。WEBアプリとして公開し、ブラウザ一つで再現・体験が可能です。</p>
+                    </div>
+                </div>
+
+                <div id="usage" class="usage-section reveal">
+                    <h3 class="centered">使い方</h3>
+
+                    <div class="usage-image reveal">
+                        <img src="slide.png" alt="アプリの機能紹介スライド">
+                    </div>
+
+                    <div class="usage-steps">
+                        <div class="step">
+                            <span class="step-num">01</span>
+                            <h4>ライブラリから再生</h4>
+                            <p>手元の音源をライブラリに追加。ブラウザ上でいつでも簡単に再生可能です。</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">02</span>
+                            <h4>プリセット登録</h4>
+                            <p>独自の音響設定をプリセットとして保存。理想の響きをいつでも呼び出せます。</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">03</span>
+                            <h4>2つのファイルを比較</h4>
+                            <p>「音源」と「録音」を選択するだけで、AIがその差分を自動で解析・マッチングします。</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">04</span>
+                            <h4>リアルな音響を体験</h4>
+                            <p>解析結果を適用し、あなたのデバイスであの日の空間が蘇ります。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="section dark">
+            <div class="container">
+                <h2 class="section-title centered">百見は一聞にしかず。</h2>
+                <p class="centered-text">フリーBGMを家庭用スピーカーで再生し、その音響を再現したデモです。
+                    <br>ぜひ、イヤフォンでお聴きください。
+                </p>
+
+                <div class="player-container">
+                    <div class="visualizer" id="visualizer">
+                        <!-- Simple visualizer bars via JS -->
+                    </div>
+                    <div class="track-info">
+                        <span id="current-stage">1. 音源 (Original Source)</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                    </div>
+                    <div class="player-controls">
+                        <button id="play-btn" class="main-btn">Play Experience</button>
+                    </div>
+                    <audio id="demo-audio" src="demo.wav"></audio>
+                    <div class="stage-pills">
+                        <span class="pill active">音源</span>
+                        <span>→</span>
+                        <span class="pill">録音</span>
+                        <span>→</span>
+                        <span class="pill">加工済み</span>
+                        <span>→</span>
+                        <span class="pill">音源</span>
+                    </div>
+                </div>
+                <p class="centered-text">使用音源：フリーBGM Morning
+                    <br>録音の質感は残しつつも、無駄な雑音が一切ないのが加工済み音源の特長です。
+                    <br>アプリを使えば、自分の好みの音響を構築することも可能です。
+                </p>
+            </div>
+        </section>
+
+        <section id="app" class="section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>今すぐ体験する。</h2>
+                    <p>専用アプリで、あなたの好きな曲も「あの場所の音」に。</p>
+                    <div class="qr-container">
+                        <div class="qr-placeholder">
+                            <img src="QR_Code.png" alt="App QR Code">
+                        </div>
+                        <div class="cta-text">
+                            <p>スマートフォンで読み取ってアクセス</p>
+                            <a href="https://eq-lab-site.vercel.app/" class="btn-link" target="_blank"
+                                rel="noopener noreferrer">アプリを開く</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="future" class="section dark tiny-footer">
+            <div class="container">
+                <h1 class="vision">「再生する音楽」から、</h1>
+                <h1 class="highlight">「戻れる場所」へ。</h1>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 @Youpied</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
