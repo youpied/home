@@ -362,7 +362,7 @@ nav {
 }
 
 .feature-card .icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--accent-color);
     margin-bottom: 2rem;
     height: 60px;
