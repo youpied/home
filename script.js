@@ -1,17 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // Intersection Observer for fade-in animations
+    // Intersection Observer for scroll-triggered animations
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -24,126 +15,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Demo Player Logic
+    // Sticky Local Nav handling
+    const localNav = document.getElementById('local-nav');
+    const hero = document.getElementById('hero');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) { // Small threshold to trigger stuck style
+            localNav.classList.add('stuck');
+        } else {
+            localNav.classList.remove('stuck');
+        }
+    });
+
+    // Refined Demo Player Logic
     const playBtn = document.getElementById('play-btn');
     const progressBar = document.getElementById('progress');
     const currentStageText = document.getElementById('current-stage');
-    const pills = document.querySelectorAll('.pill');
-    const visualizer = document.getElementById('visualizer');
+    const labelPills = document.querySelectorAll('.label-pill');
+    const audio = document.getElementById('demo-audio');
 
-    // Create visualizer bars
-    for (let i = 0; i < 30; i++) {
-        const bar = document.createElement('div');
-        bar.className = 'visualizer-bar';
-        bar.style.height = '10px';
-        visualizer.appendChild(bar);
-    }
-
-    const bars = document.querySelectorAll('.visualizer-bar');
     let isPlaying = false;
-    let progress = 0;
     let animationFrame;
 
     const stages = [
-        { name: '1. 音源 (Original Source)', duration: 10 },
-        { name: '2. 録音 (Field Recording)', duration: 20 },
-        { name: '3. 加工済み (Processed Output)', duration: 30 },
-        { name: '4. 音源 (Original Source)', duration: 40 }
+        { name: 'Original Source', time: 0 },
+        { name: 'Field Recording', time: 10 },
+        { name: 'Processed Output', time: 20 },
+        { name: 'Original Source', time: 30 }
     ];
 
-    const audio = document.getElementById('demo-audio');
-
-    function updateVisualizer() {
+    function updatePlayerLayout() {
         if (!isPlaying) return;
 
-        bars.forEach(bar => {
-            const height = Math.random() * 80 + 10;
-            bar.style.height = `${height}%`;
-        });
+        const duration = 40; // Assuming 40s total audio
+        const progressPercent = (audio.currentTime / duration) * 100;
 
-        requestAnimationFrame(updateVisualizer);
-    }
-
-    function animate() {
-        if (!isPlaying) return;
-
-        // Sync visual progress with audio time
-        const duration = 40; // Total duration in seconds
-        progress = (audio.currentTime / duration) * 100;
-
-        if (audio.ended || progress >= 100) {
-            progress = 100;
-            progressBar.style.width = '100%';
-            isPlaying = false;
-            playBtn.textContent = 'Replay';
-            bars.forEach(bar => bar.style.height = '10px');
-            currentStageText.textContent = "体験終了";
+        if (audio.ended || progressPercent >= 100) {
+            resetPlayer();
+            playBtn.textContent = 'もう一度聴く';
             return;
         }
 
-        progressBar.style.width = `${progress}%`;
+        progressBar.style.width = `${progressPercent}%`;
 
-        // Update stage text and pills based on audio time
+        // Update stage text and labels
         const currentStageIndex = Math.min(
             Math.floor(audio.currentTime / 10),
             stages.length - 1
         );
 
-        currentStageText.textContent = stages[currentStageIndex].name;
-        updatePills(currentStageIndex);
-
-        animationFrame = requestAnimationFrame(animate);
-    }
-
-    function playExperience() {
-        if (isPlaying) {
-            resetPlayer();
-            return;
+        if (currentStageText.textContent !== stages[currentStageIndex].name) {
+            currentStageText.textContent = stages[currentStageIndex].name;
+            updatePills(currentStageIndex % 3);
         }
 
-        isPlaying = true;
-        playBtn.textContent = 'Reset Experience';
-        audio.play().catch(e => console.log("Audio play failed: ", e));
-        updateVisualizer();
-        animate();
-    }
-
-    function resetPlayer() {
-        isPlaying = false;
-        cancelAnimationFrame(animationFrame);
-        audio.pause();
-        audio.currentTime = 0;
-        progress = 0;
-        progressBar.style.width = '0%';
-        playBtn.textContent = 'Play Experience';
-        currentStageText.textContent = stages[0].name;
-        updatePills(0);
-        bars.forEach(bar => bar.style.height = '10px');
+        animationFrame = requestAnimationFrame(updatePlayerLayout);
     }
 
     function updatePills(index) {
-        pills.forEach((pill, i) => {
+        labelPills.forEach((pill, i) => {
             if (i === index) pill.classList.add('active');
             else pill.classList.remove('active');
         });
     }
 
-    // Add click listeners to pills
-    pills.forEach((pill, index) => {
-        pill.addEventListener('click', () => {
-            const stageTime = index * 10; // 10s per stage
-            audio.currentTime = stageTime;
+    function togglePlay() {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            playBtn.textContent = '再開する';
+            cancelAnimationFrame(animationFrame);
+        } else {
+            audio.play().catch(console.error);
+            isPlaying = true;
+            playBtn.textContent = '停止';
+            updatePlayerLayout();
+        }
+    }
 
+    function resetPlayer() {
+        isPlaying = false;
+        audio.pause();
+        audio.currentTime = 0;
+        progressBar.style.width = '0%';
+        playBtn.textContent = '体験を再生';
+        currentStageText.textContent = stages[0].name;
+        updatePills(0);
+        cancelAnimationFrame(animationFrame);
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+
+    // Pill interaction
+    labelPills.forEach((pill, index) => {
+        pill.addEventListener('click', () => {
+            audio.currentTime = index * 10;
             if (!isPlaying) {
-                // If not playing, start it
-                playExperience();
+                togglePlay();
             } else {
-                // Update text and highlight immediately if already playing
-                currentStageText.textContent = stages[index].name;
                 updatePills(index);
+                currentStageText.textContent = stages[index].name;
             }
         });
     });
 
-    playBtn.addEventListener('click', playExperience);
+    // Smooth anchor scrolling for Local Nav
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offset = localNav.offsetHeight;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = target.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });

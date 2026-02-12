@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体験する - 耳で見る、あの日の景色。| @Yopiey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav id="local-nav">
+        <div class="container nav-content">
+            <div class="product-name"><a href="index.html" style="text-decoration:none; color:inherit;">@Yopiey</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">概要</a>
+                <a href="technology.html">テクノロジー</a>
+                <a href="experience.html" class="active" style="color:var(--accent-color); font-weight:600;">体験</a>
+                <a href="app.html" class="apple-btn black" target="_blank">今すぐ使う</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section" style="padding-top: 100px;">
+            <div class="container">
+                <div class="center-content reveal">
+                    <h1 class="headline-l">百見は、<br>一聞にしかず。</h1>
+                    <p class="subheadline">家庭用スピーカーで再生された録音と、<br>AIがそれを再現した音を聴き比べてください。</p>
+                </div>
+
+                <div class="player-wrapper reveal">
+                    <div class="player-ui">
+                        <h3 id="current-stage" style="margin-bottom: 24px; font-weight: 600;">Original Source</h3>
+                        <div
+                            style="width: 100%; height: 3px; background: rgba(0,0,0,0.1); margin-bottom: 48px; position: relative; border-radius: 10px;">
+                            <div id="progress"
+                                style="position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: #000; border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button id="play-btn" class="apple-btn black"
+                                style="padding: 18px 48px; font-size: 1.2rem;">再生する</button>
+                        </div>
+                        <audio id="demo-audio" src="demo.wav"></audio>
+                    </div>
+
+                    <div class="stage-labels" style="margin-top: 60px;">
+                        <span class="label-pill active">音源</span>
+                        <span class="label-pill">録音</span>
+                        <span class="label-pill">加工済み</span>
+                    </div>
+                </div>
+
+                <div class="center-content reveal" style="margin-top: 100px;">
+                    <h2 class="headline-m">音に、奥行きを。</h2>
+                    <p class="subheadline">
+                        左側の「音源」は、デジタルでクリアですが平面的です。<br>
+                        中央の「録音」は、空間の広がりはありますが<br>ノイズも含まれます。<br>
+                        右側の「加工済み」は、両者の良さを兼ね備えた、<br>私たちが目指す「戻れる場所」の音です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container center-content reveal">
+                <h2 class="headline-l">あなたの曲も、<br>あの場所へ。</h2>
+                <div style="margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 40px;">
+                    <img src="QR_Code.png" alt="QR"
+                        style="width: 180px; height: 180px; border-radius: 24px; background: #f5f5f7; padding: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                    <a href="https://eq-lab-site.vercel.app/" class="apple-btn" target="_blank"
+                        style="padding: 16px 40px;">アプリで自分の曲を再生する</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Copyright &copy; 2026 @Youpied. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

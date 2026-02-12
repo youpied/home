@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テクノロジー - 耳で見る、あの日の景色。| @Yopiey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav id="local-nav">
+        <div class="container nav-content">
+            <div class="product-name"><a href="index.html" style="text-decoration:none; color:inherit;">@Yopiey</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">概要</a>
+                <a href="technology.html" class="active" style="color:var(--accent-color); font-weight:600;">テクノロジー</a>
+                <a href="experience.html">体験</a>
+                <a href="app.html" class="apple-btn black" target="_blank">今すぐ使う</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section" style="padding-top: 100px;">
+            <div class="container">
+                <div class="center-content reveal">
+                    <h1 class="headline-l">「再生する音楽」から<br>「戻れる場所」へ。</h1>
+                    <p class="subheadline">アプリの使い方を説明します。</p>
+                </div>
+
+                <div class="bento-grid">
+                    <div class="bento-item tall reveal">
+                        <div class="bento-icon">１</div>
+                        <h3>音声の読み込み</h3>
+                        <p>右上の「+」ボタンを押すことで音声ファイルをライブラリに読み込むことができます。一度読み込んだ音声ファイルはサイトを再読み込みしても保持されます。</p>
+                    </div>
+
+                    <div class="bento-item tall reveal">
+                        <div class="bento-icon">２</div>
+                        <h3>録音ファイルと比較</h3>
+                        <p>PCでは右側、スマートフォンでは画面下部のタブの一番右の、「MATCHING」をタップすると、AI比較の画面になります。そこで、録音ファイルをアップロードし、「Calculate Best EQ」をタップすることで自動的にプリセットが作成されます。</p>
+                    </div>
+
+                    <div class="bento-item tall reveal">
+                        <div class="bento-icon">３</div>
+                        <h3>プリセットに保存</h3>
+                        <p>プリセットとは、イコライザー、リバーブなどの設定を保存する機能です。AIで比較することで算出された数値は、名前を付けたらプリセットとして保存されます。タブの「EQ」をタップすることで、プリセットの選択画面に移動します。</p>
+                    </div>
+
+                    <div class="bento-item tall reveal">
+                        <div class="bento-icon">４</div>
+                        <h3>プリセットの編集</h3>
+                        <p>プリセットは、PCからアクセスした場合のみ編集することができます。イコライザーなどを自分の好みに合ったバランスに設定することが可能です。スマートフォンからはイコライザーの設定は表示されません。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="app" class="section">
+            <div class="container reveal">
+                <div class="center-content">
+                    <h2 class="headline-l">あなたの音を、<br>再現の向こう側へ。</h2>
+                    <p class="subheadline">下の二次元コードを読み取る<br>または「アプリを起動する」から体験。</p>
+                    <div
+                        style="margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 40px;">
+                        <img src="QR_Code.png" alt="QR"
+                            style="width: 160px; height: 160px; border-radius: 20px; background: #f5f5f7; padding: 10px; border: 1px solid rgba(0,0,0,0.05);">
+                        <a href="https://eq-lab-site.vercel.app/" class="apple-btn" target="_blank"
+                            rel="noopener">アプリを起動する</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Copyright &copy; 2026 @Youpied. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
